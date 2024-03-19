@@ -1,12 +1,8 @@
-import React, { useState } from "react";
-import data from "../data.json";
+import React from "react";
 import "../style/TodoList.scss";
 import "../style/TodoListItem.scss";
 
-const TodoList = () => {
-    const [schedules, setSchedules] = useState(data.schedules);
-    console.log(schedules);
-
+const TodoList = ({schedules, setSchedules}) => {
     const delSchedule = (id) => {
         setSchedules(schedules.filter(schedule => schedule.id !== id));
     }
