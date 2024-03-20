@@ -3,6 +3,7 @@ import { MdCheckBoxOutlineBlank, MdCheckBox, MdRemoveCircleOutline, MdCreate } f
 import "../style/TodoListItem.scss";
 import cn from "classnames";
 import TodoDelModal from "./TodoDelModal";
+import TodoUpdModal from "./TodoUpdModal";
 
 const TodoListItem = ( {schedule, deleteSchedule, onToggle}) => {
     const {id, sc, checked} = schedule;
@@ -44,7 +45,7 @@ const TodoListItem = ( {schedule, deleteSchedule, onToggle}) => {
                 <MdRemoveCircleOutline onClick={openDelModal}/>
             </div>
             <TodoDelModal open={delModal} close={closeModal} header="삭제" confirm={() => handleDelete(id)} type="confirm">삭제 하시겠습니까?</TodoDelModal>
-            {/* <TodoModal open={updModal} close={closeModal} header="수정하기" confirm={() => handleDelete(id)} type="confirm"></TodoModal> */}
+            <TodoUpdModal open={updModal} close={closeModal} header="수정하기" confirm={() => handleDelete(id)} type="confirm"></TodoUpdModal>
         </div>
     )
 }

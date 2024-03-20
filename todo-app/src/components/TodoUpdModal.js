@@ -36,7 +36,7 @@ const ModalStyle = styled.div`
       font-weight: 700;
       button {
         position: absolute;
-        top: 15px;
+        top: 14px;
         right: 15px;
         width: 30px;
         font-size: 21px;
@@ -53,7 +53,7 @@ const ModalStyle = styled.div`
     }
     footer {
       padding: 12px 16px;
-      text-align: right;
+      text-align: center;
       button {
         padding: 6px 12px;
         color: #fff;
@@ -106,7 +106,7 @@ const TodoUpdModal = (props) => {
             </header>
             <main>{children}</main>
             <footer>
-              {type === "confirm" && <Button onClick={confirm}>확인</Button>}
+              {type === "confirm" && <Button onClick={confirm}>수정하기</Button>}
               <Button onClick={close}>취소</Button>
             </footer>
           </section>
