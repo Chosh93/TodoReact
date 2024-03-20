@@ -3,7 +3,6 @@ import "../style/TodoList.scss";
 import TodoListItem from "./TodoListItem";
 
 const TodoList = ({ schedules, deleteSchedule, onToggle }) => {
-    console.log(schedules);
     return (
         <div className="TodoList">
             {schedules.map((schedule) => (

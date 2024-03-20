@@ -27,7 +27,7 @@ const Main = () => {
             ),
           );
         },
-        [setSchedules],
+        [schedules, setSchedules],
       );
 
     return (
