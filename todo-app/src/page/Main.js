@@ -11,10 +11,13 @@ const Main = () => {
         setSchedules([...schedules, schedule]);
     }
 
-    const deleteSchedule = (id) => {
-        const deletedSchedules = schedules.filter(schedule => schedule.id !== id);
-        setSchedules(deletedSchedules);
-    }
+    const deleteSchedule = useCallback(
+        (id) => {
+            console.log(id)
+            setSchedules(schedules.filter((schedule) => schedule.id !== id));
+          },
+          [schedules],
+    )
 
     const onToggle = useCallback(
         (id) => {

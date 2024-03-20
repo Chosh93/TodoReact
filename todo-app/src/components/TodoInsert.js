@@ -10,20 +10,21 @@ const TodoInsert = ({ insertSchedule }) => {
         setInputSc(data);
     }
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault();
         insertSchedule({ id: Date.now(), sc: inputSc, checked: false });
         setInputSc("");
     }
 
     return (
-        <form className="TodoInsert">
+        <form className="TodoInsert" onSubmit={handleClick}>
             <input
                 type="text"
                 value={inputSc}
                 placeholder="할 일을 입력하세요."
                 onChange={onChangeInsertData}
             />
-            <button type="button" onClick={handleClick}>
+            <button type="submit" onClick={handleClick}>
                 <MdAdd />
             </button>
         </form>
