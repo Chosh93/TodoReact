@@ -1,25 +1,17 @@
 import React from "react";
 import "../style/TodoList.scss";
-import "../style/TodoListItem.scss";
+import TodoListItem from "./TodoListItem";
 
-const TodoList = ({schedules, setSchedules}) => {
-    const delSchedule = (id) => {
-        setSchedules(schedules.filter(schedule => schedule.id !== id));
-    }
-
+const TodoList = ({ schedules, deleteSchedule, onToggle }) => {
+    console.log(schedules);
     return (
         <div className="TodoList">
-            <ul>
-                {schedules.map((schedule) =>
-                    <li className="TodoListItem" key={schedule.id}>
-                        <input type="checkbox"/>
-                        {schedule.sc}
-                        <button>수정</button>
-                        <button onClick={() => delSchedule(schedule.id)}>삭제</button>
-                    </li>
-                )}
-            </ul>
+            {schedules.map((schedule) => (
+                <TodoListItem key={schedule.id} schedule={schedule} deleteSchedule={deleteSchedule} onToggle={onToggle} />
+            ))}
         </div>
     );
-}
+};
+
 export default TodoList;
+
