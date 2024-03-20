@@ -28,6 +28,13 @@
             }
         }
     }
+    .update{
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding-right: 10px;
+    }
     .remove {
         display: flex;
         align-items: center;
