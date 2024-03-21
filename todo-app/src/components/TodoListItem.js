@@ -5,13 +5,13 @@ import cn from "classnames";
 import TodoDelModal from "./TodoDelModal";
 import TodoUpdModal from "./TodoUpdModal";
 
-const TodoListItem = ( {schedule, deleteSchedule, onToggle}) => {
+const TodoListItem = ( {schedule, deleteSchedule, updateschedule, onToggle}) => {
     const {id, sc, checked} = schedule;
     const [delModal, setDelModal] = useState(false);
     const [updModal, setUpdModal] = useState(false);
-    const [inputUpdate, setInputdate] = useState("");
+    const [inputUpdate, setInputdate] = useState(sc);
 
-    const handleUpdate = (e) => {
+    const onChangeUpdate = (e) => {
         setInputdate(e.target.value);
     };
 
@@ -32,6 +32,11 @@ const TodoListItem = ( {schedule, deleteSchedule, onToggle}) => {
         deleteSchedule(id);
     };
 
+    const handleUpdate = () => {
+        updateschedule(id, inputUpdate);
+        closeModal();
+    }
+
     return (
         <div className={"TodoListItem"}>
             <div className={cn('checkbox', { checked })} onClick={() => onToggle(id)}>
@@ -45,7 +50,9 @@ const TodoListItem = ( {schedule, deleteSchedule, onToggle}) => {
                 <MdRemoveCircleOutline onClick={openDelModal}/>
             </div>
             <TodoDelModal open={delModal} close={closeModal} header="삭제" confirm={() => handleDelete(id)} type="confirm">삭제 하시겠습니까?</TodoDelModal>
-            <TodoUpdModal open={updModal} close={closeModal} header="수정하기" confirm={() => handleDelete(id)} type="confirm"></TodoUpdModal>
+            <TodoUpdModal open={updModal} header="수정하기" confirm={() => handleUpdate(id, inputUpdate)} type="confirm">
+                <input type="text" onChange={onChangeUpdate} placeholder={sc}/>
+            </TodoUpdModal>
         </div>
     )
 }

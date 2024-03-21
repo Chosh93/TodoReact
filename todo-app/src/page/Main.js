@@ -11,6 +11,15 @@ const Main = () => {
         setSchedules([...schedules, schedule]);
     }
 
+    const updateschedule = useCallback(
+        (id, updateSc) => {
+            console.log(id + " " + updateSc);
+            setSchedules(schedules.map((schedule) => 
+                    schedule.id === id ? { ...schedule, sc: updateSc } : schedule
+            ));
+        }, [schedules]
+    )
+
     const deleteSchedule = useCallback(
         (id) => {
             console.log(id)
@@ -33,7 +42,7 @@ const Main = () => {
     return (
         <TodoTemplate>
             <TodoInsert insertSchedule={insertSchedule}/>
-            <TodoList schedules={schedules} deleteSchedule={deleteSchedule} onToggle={onToggle}/>
+            <TodoList schedules={schedules} deleteSchedule={deleteSchedule} updateschedule={updateschedule} onToggle={onToggle}/>
         </TodoTemplate>
     )
 }

@@ -31,9 +31,11 @@ const ModalStyle = styled.div`
     overflow: hidden;
     header {
       position: relative;
-      padding: 16px 64px 16px 16px;
-      background-color: #f1f1f1;
+      padding: 12px 16px;
+      background-color: #22b8cf;
       font-weight: 700;
+      text-align: center;
+      color: white;
       button {
         position: absolute;
         top: 14px;
@@ -47,9 +49,16 @@ const ModalStyle = styled.div`
       }
     }
     main {
-      padding: 16px;
+      padding: 30px;
       border-bottom: 1px solid #dee2e6;
       border-top: 1px solid #dee2e6;
+      text-align: center;
+      input{
+        border: none;
+        border-bottom: 1px solid #22b8cf;
+        outline: none;
+        background: transparent;
+      }
     }
     footer {
       padding: 12px 16px;
@@ -57,7 +66,7 @@ const ModalStyle = styled.div`
       button {
         padding: 6px 12px;
         color: #fff;
-        background-color: #6c757d;
+        background-color: #22b8cf;
         border-radius: 5px;
         font-size: 13px;
       }
@@ -89,7 +98,7 @@ const Button = styled.button`
   cursor: pointer;
   margin-right: 10px;
   border: 0;
-  width: 60px;
+  width: 200px;
 `;
 
 const TodoUpdModal = (props) => {
@@ -102,12 +111,10 @@ const TodoUpdModal = (props) => {
           <section>
             <header>
               {header}
-              <button onClick={close}>&times;</button>
             </header>
             <main>{children}</main>
             <footer>
               {type === "confirm" && <Button onClick={confirm}>수정하기</Button>}
-              <Button onClick={close}>취소</Button>
             </footer>
           </section>
         )}
