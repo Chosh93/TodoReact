@@ -37,6 +37,12 @@ const TodoListItem = ( {schedule, deleteSchedule, updateschedule, onToggle}) => 
         closeModal();
     }
 
+    const handleOnKeyPress = e => {
+        if(e.key === 'Enter') {
+            handleUpdate();
+        }
+    }
+
     return (
         <div className={"TodoListItem"}>
             <div className={cn('checkbox', { checked })} onClick={() => onToggle(id)}>
@@ -51,7 +57,7 @@ const TodoListItem = ( {schedule, deleteSchedule, updateschedule, onToggle}) => 
             </div>
             <TodoDelModal open={delModal} close={closeModal} header="삭제" confirm={() => handleDelete(id)} type="confirm">삭제 하시겠습니까?</TodoDelModal>
             <TodoUpdModal open={updModal} header="수정하기" confirm={() => handleUpdate(id, inputUpdate)} type="confirm">
-                <input type="text" onChange={onChangeUpdate} placeholder={sc}/>
+                <input type="text" onChange={onChangeUpdate} placeholder={sc} onKeyUp={handleOnKeyPress}/>
             </TodoUpdModal>
         </div>
     )
