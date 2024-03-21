@@ -13,4 +13,3 @@ const TodoList = ({ schedules, deleteSchedule, updateschedule, onToggle }) => {
 };
 
 export default TodoList;
-
