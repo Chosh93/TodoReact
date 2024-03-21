@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const ModalStyle = styled.div`
@@ -95,6 +95,21 @@ const Button = styled.button`
 const TodoDelModal = (props) => {
   const { open, confirm, close, type, header, children } = props;
 
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (e.target.classList.contains("modal")) {
+        close();
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [open, close]);
   return (
     <ModalStyle>
       <div className={open ? "openModal modal" : "modal"}>
